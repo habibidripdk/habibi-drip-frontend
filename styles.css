@@ -1,0 +1,98 @@
+/* ✅ Global styles */
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #fefefe;
+  color: #222;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ✅ Container */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2em;
+}
+
+/* ✅ Product grid */
+#product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2em;
+}
+
+/* ✅ Product card */
+.product-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 1em;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+}
+
+.product-card img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.product-card h3 {
+  margin: 0.5em 0;
+  font-size: 1.1em;
+}
+
+.product-card p {
+  margin: 0.2em 0;
+  font-weight: 500;
+  color: #444;
+}
+
+.product-card button {
+  margin-top: 0.5em;
+  padding: 0.6em 1.2em;
+  background-color: #222;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.product-card button:hover {
+  background-color: #444;
+}
+
+/* ✅ Cart styles */
+.cart-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8em 0;
+  border-bottom: 1px solid #eee;
+}
+
+#cart-total {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 1em;
+}
+
+/* ✅ Success page */
+.success-message {
+  text-align: center;
+  margin-top: 5em;
+  font-size: 1.4em;
+  color: #2e7d32;
+}

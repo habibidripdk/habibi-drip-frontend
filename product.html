@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" href="habibi-logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product – Habibi Drip</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <div class="container" id="product-container">
+    <h1>Loading product...</h1>
+  </div>
+
+  <script>
+    // ✅ Load a single product based on URL parameter
+    async function loadSingleProduct() {
+      const params = new URLSearchParams(window.location.search);
+      const productId = params.get("id");
+
+      if (!productId) {
+        document.getElementById("product-container").innerHTML = "<h2>Product not found</h2>";
+        return;
+      }
+
+      try {
+        const response = await fetch("http://localhost:3000/products");
+        const products = await response.json();
+        const product = products.find(p => p.id === productId);
+
+        if (!product) {
+          document.getElementById("product-container").innerHTML = "<h2>Product not found</h2>";
+          return;
+        }
+
+        const mockup = product.variants[0].images[0].src;
+        const title = product.title;
+        const price = product.variants[0].price / 100;
+        const variantId = product.variants[0].id;
+
+        document.getElementById("product-container").innerHTML = `
+          <img src="${mockup}" style="max-width:300px; border-radius:12px;">
+          <h1>${title}</h1>
+          <p style="font-size:1.2em; font-weight:600;">${price} DKK</p>
+
+          <button style="
+            margin-top:1em;
+            padding:0.8em 1.6em;
+            background:#222;
+            color:#fff;
+            border:none;
+            border-radius:6px;
+            cursor:pointer;
+          " onclick="addToCart('${product.id}', '${variantId}', '${title}', ${price})">
+            Add to Cart
+          </button>
+
+          <br><br>
+          <a href="index.html">← Back to shop</a>
+        `;
+
+      } catch (err) {
+        console.error("Error loading product:", err);
+      }
+    }
+
+    loadSingleProduct();
+  </script>
+
+</body>
+</html>
