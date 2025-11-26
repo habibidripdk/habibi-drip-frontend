@@ -3,7 +3,7 @@ async function loadProducts() {
   const container = document.getElementById("product-list");
 
   try {
-    const response = await fetch("http://localhost:3000/products");
+    const response = await fetch("https://habibi-drip-backend.onrender.com/");
     const products = await response.json();
 
     products.forEach(product => {
@@ -85,3 +85,4 @@ async function placeOrder(customer) {
     alert("Order failed");
   }
 }
+
